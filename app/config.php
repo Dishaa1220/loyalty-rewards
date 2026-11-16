@@ -22,5 +22,10 @@ function env(string $key, $default = null)
 {
     return $_ENV[$key] ?? $default;
 }
+// Builds a link that works from any folder: url('login.php')
+function url(string $path = ''): string
+{
+    return rtrim(env('BASE_URL', '/loyalty-rewards/public'), '/') . '/' . ltrim($path, '/');
+}
 
 load_env(__DIR__ . '/../.env');

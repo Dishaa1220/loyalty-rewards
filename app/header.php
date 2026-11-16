@@ -13,17 +13,20 @@ $user = current_user();
 <body class="bg-light">
 <nav class="navbar navbar-expand navbar-dark bg-dark mb-4">
   <div class="container">
-    <a class="navbar-brand" href="index.php">Loyalty Rewards</a>
+    <a class="navbar-brand" href="<?= e(url('index.php')) ?>">Loyalty Rewards</a>
     <div class="ms-auto d-flex align-items-center gap-3 text-white">
       <?php if ($user): ?>
+        <?php if ($user['role'] === 'admin'): ?>
+          <a class="text-white" href="<?= e(url('admin/index.php')) ?>">Admin</a>
+        <?php endif; ?>
         <span><?= e($user['name']) ?> (<?= e($user['role']) ?>)</span>
-        <form method="post" action="logout.php" class="m-0">
+        <form method="post" action="<?= e(url('logout.php')) ?>" class="m-0">
           <?= csrf_field() ?>
           <button class="btn btn-outline-light btn-sm">Logout</button>
         </form>
       <?php else: ?>
-        <a class="text-white" href="login.php">Login</a>
-        <a class="text-white" href="register.php">Register</a>
+        <a class="text-white" href="<?= e(url('login.php')) ?>">Login</a>
+        <a class="text-white" href="<?= e(url('register.php')) ?>">Register</a>
       <?php endif; ?>
     </div>
   </div>

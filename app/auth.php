@@ -31,7 +31,7 @@ function current_user(): ?array
 function require_login(): void
 {
     if (current_user() === null) {
-        header('Location: login.php');
+        header('Location: ' . url('login.php'));
         exit;
     }
 }
