@@ -25,7 +25,10 @@ require __DIR__ . '/../app/header.php';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h1 class="h4 mb-0">Hello, <?= e($me['name']) ?></h1>
-  <a href="<?= e(url('redeem.php')) ?>" class="btn btn-primary">Claim a code</a>
+  <div class="d-flex gap-2">
+    <a href="<?= e(url('payout.php')) ?>" class="btn btn-outline-success">Cash out</a>
+    <a href="<?= e(url('redeem.php')) ?>" class="btn btn-primary">Claim a code</a>
+  </div>
 </div>
 
 <div class="row g-3 mb-4">
@@ -62,7 +65,7 @@ require __DIR__ . '/../app/header.php';
           if ($r['type'] === 'earn') {
               $label = 'Claimed ' . ($r['product_name'] ?? 'a box code');
           } elseif ($r['type'] === 'redeem') {
-              $label = 'Cash-out';
+              $label = $r['note'] ?: 'Cash-out';
           } else {
               $label = $r['note'] ?: 'Adjustment';
           }

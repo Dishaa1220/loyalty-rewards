@@ -35,6 +35,7 @@ require __DIR__ . '/../../app/header.php';
 
 <div class="list-group">
   <a class="list-group-item list-group-item-action" href="<?= e(url('admin/products.php')) ?>">Manage products</a>
+  <a class="list-group-item list-group-item-action" href="<?= e(url('admin/batches.php')) ?>">Code batches and QR codes</a>
   <a class="list-group-item list-group-item-action" href="<?= e(url('admin/settings.php')) ?>">Coin settings</a>
 </div>
 <?php require __DIR__ . '/../../app/footer.php'; ?>
