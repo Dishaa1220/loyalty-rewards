@@ -49,7 +49,7 @@ loyalty-rewards/
   public/              pages the browser opens
     register.php  login.php  logout.php  index.php (wallet)  redeem.php  payout.php
     admin/             index.php  products.php  batches.php  batch.php  payouts.php  settings.php
-  database/            schema.sql  002_payouts.sql  demo_data.sql  demo_reset.sql
+    database/            schema.sql  002_payouts.sql  seed_demo.php
   tests/               test_codes.php  test_redeem.php  test_wallet.php  test_payouts.php  MANUAL_TESTS.md
   README.md  ASSUMPTIONS.md  AI_LOG.md  ARCHITECTURE.md  .env.example
 ```
