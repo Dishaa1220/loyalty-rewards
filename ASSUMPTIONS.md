@@ -79,3 +79,18 @@ The minimum is an owner-editable setting (default 100 coins).
 # UPI ID is the only payment detail collected
 It is visible only to the customer and the admin.
 **Why:** it is the minimum the owner needs to pay; no bank account numbers are stored.
+
+# Fraud-flag rules and thresholds
+Flags look at the last 24 hours: 5 or more failed scans by one account, 5 or more failed scans
+from one IP address, 3 or more accounts on one IP address, 10 or more redemptions by one account.
+**Why:** simple, explainable rules; the thresholds are constants in app/monitor.php and easy to tune.
+
+# Flags are alerts for a human; nothing is blocked automatically
+**Why:** a shared IP or a fast redeemer can be innocent (a family, a shop); the owner decides.
+
+# Blocking a batch only affects unused codes
+Unblocking restores only blocked codes that were never redeemed.
+**Why:** a used code must never become usable again.
+
+# The 14-day trend uses the database server's date
+**Why:** it keeps the dates consistent with the timestamps stored in the database.

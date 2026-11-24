@@ -46,11 +46,12 @@ loyalty-rewards/
     redeem.php         atomic redemption, ledger insert, scan log, rate limit
     wallet.php         history, pagination, summary
     payouts.php        cash-out requests, approve, reject
+    monitor.php        dashboard queries, fraud flags, batch block and unblock
   public/              pages the browser opens
     register.php  login.php  logout.php  index.php (wallet)  redeem.php  payout.php
-    admin/             index.php  products.php  batches.php  batch.php  payouts.php  settings.php
+    admin/             index.php  monitor.php  products.php  batches.php  batch.php  payouts.php  settings.php
     database/            schema.sql  002_payouts.sql  seed_demo.php
-  tests/               test_codes.php  test_redeem.php  test_wallet.php  test_payouts.php  MANUAL_TESTS.md
+  tests/               test_codes.php  test_redeem.php  test_wallet.php  test_payouts.php  test_monitor.php
   README.md  ASSUMPTIONS.md  AI_LOG.md  ARCHITECTURE.md  .env.example
 ```
 
@@ -235,15 +236,16 @@ Rules:
 
 ## 9. Owner monitoring
 
-The owner can currently:
-- see product, customer and pending cash-out counts and the coin rate on the admin dashboard;
-- see, for each batch, how many codes were generated and how many were used;
-- review, approve or reject cash-out requests, with notes and a history;
-- change the coin rate and minimum cash-out.
+## 9. Owner monitoring
 
-Every scan attempt (success, invalid, already used, blocked) is stored in `scan_attempts` with the account and IP address, ready for the monitoring dashboard.
+The owner has a Monitoring page (`public/admin/monitor.php`) that shows:
+- **Headline numbers:** codes generated, unused, used and blocked; redemption rate; coins issued; coins in customer wallets and their rupee value; approved and pending cash-outs; scans and failed scans in the last 24 hours.
+- **Fraud flags** (rule-based alerts, last 24 hours): many failed scans by one account, many failed scans from one IP address, several accounts on one IP address, and unusually many redemptions by one account. The thresholds are constants in `app/monitor.php`. Flags are for a human to review; nothing is blocked automatically.
+- **Trend and breakdowns:** redemptions per day for 14 days, results per product, and per-batch counts.
+- **Scan log:** the latest scan attempts with account, code tried, result and IP address, filterable by result.
+- **Actions:** block all unused codes of a batch (for a stolen or faulty batch) and unblock them again. Used codes are never affected.
 
-<!-- TODO: after the monitoring dashboard (Step 9) is built, describe its charts and fraud flags here. -->
+Other management pages: products and coin rate, code batches and QR sheets, and cash-out review.
 
 ## 10. Security measures
 
