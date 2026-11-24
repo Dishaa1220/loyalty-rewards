@@ -22,3 +22,7 @@ batches, and monitors redemptions from an admin dashboard.
 ## Deployed Link
 Not deployed yet.
 
+# Demo data for testing
+`php database/seed_demo.php` creates two demo customers, three products and 10 codes
+and prints test links. `php database/seed_demo.php reset` removes it all.
+Run reset before any real deployment.
