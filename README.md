@@ -86,7 +86,7 @@ To scan with a real phone, set `APP_URL` to your computer's address on the same 
 ```
 C:\xampp\php\php.exe database\seed_demo.php
 ```
-Creates two demo customers (`ravi@demo.test` and `priya@demo.test`, password `Demo@1234`), three products and ten codes, and prints a ready-to-open link for each code. It needs an admin account to exist first. Remove everything again with:
+Creates two demo customers (`ravi@demo.test` and `priya@demo.test`, password `Demo@123`), three products and ten codes, and prints a ready-to-open link for each code. It needs an admin account to exist first. Remove everything again with:
 ```
 C:\xampp\php\php.exe database\seed_demo.php reset
 ```
